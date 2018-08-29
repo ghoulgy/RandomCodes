@@ -1,0 +1,90 @@
+Word VBA Script
+####### Debug to check string
+MsgBox "the values of my dynamic array are: " & msg
+sMyString = InputBox("Your string", "Your string", "Your string")
+####### Select column in a table
+Selection.Tables(1).Columns(1).Select
+####### Select row in a table
+Selection.Tables(1).Rows(1).Select
+####### Select specific cell in a table
+Selection.Tables(1).Cell(1, 1).Select
+####### Execute Find Function
+Selection.Find.ClearFormatting
+With Selection.Find
+    .Text = "sad"
+    .Replacement.Text = ""
+    .Forward = True
+    .Wrap = wdFindAsk
+    .Format = False
+    .MatchCase = False
+    .MatchWholeWord = False
+    .MatchWildcards = False
+    .MatchSoundsLike = False
+    .MatchAllWordForms = False
+End With
+
+Do While Selection.Find.Execute
+    If Selection.Information(wdWithInTable) Then
+        Stop
+        'now you are in table with text you searched
+        'be careful with changing Selection Object
+        'do what you need here
+    End If
+Loop
+
+####### Select specific cell in the table
+Dim mytable As Table
+
+For Each itable In ActiveDocument.Tables
+  # Select with specific cell and char
+  itable.Cell(1, 2).Range.Characters(1).Select
+  Selection.MoveEnd wdCharacter, 1
+  
+  # Replace specific cell table to "Nmae"
+  itable.Cell(1, 2).Range.Range.Text = "Nmae"
+Next
+
+####### Compare the specific cell table with a string and replace cell with another string
+Dim mytable As Table
+Dim rng As Word.Range
+
+For Each itable In ActiveDocument.Tables
+  Set rng = itable.Cell(3, 1).Range.Characters(1)
+  rng.End = rng.End + 6
+  colCount = itable.Columns.Count
+  
+  ' Choose table with specific Columns
+  ' sMyString = InputBox("bb", itable.Columns.Count, "dd")
+  If StrComp(colCount, "2") = 0 Then
+    If StrComp(rng, "Aliases", 1) = 0 Then
+      If itable.Cell(3, 2).Range.Text = Chr(13) & Chr(7) Then
+        itable.Cell(3, 2).Range.Text = "-"
+      End If
+    End If
+  End If       
+Next
+
+####### Extract Port Number, Protocol and Service Name
+With Selection.Find
+        .Text = "Evidence:*CVSS"
+        .MatchWildcards = True
+        .IgnoreSpace = True
+    End With
+         
+    For Each itable In ActiveDocument.Tables
+        colCount = itable.Columns.Count
+        RowCount = itable.Rows.Count
+        col_serv = 2
+        col_desc = 4
+
+        If StrComp(colCount, "5") = 0 Then
+            For i = 2 To RowCount
+                If Selection.Find.Execute = True Then
+                    If Selection.Find.Found = True Then
+                        MsgBox itable.Cell(i, col_serv).Range.Text & Selection.Range.Text
+                        'Cells(i, col_n).Value = "PHEV"
+                    End If
+                End If
+            Next
+        End If
+    Next
