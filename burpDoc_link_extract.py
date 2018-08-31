@@ -8,14 +8,18 @@
 '	Weakness: Only For redundancy count > 2 will merge
 '	Able to alter the redundancy count but condition will
 '	increase and GL hv edit
+'
+'	Main + 1 == Main poops+=1
+'	url + 1 == Main poops+=1
 '''
 
 import re
 import urllib.request
 from bs4 import BeautifulSoup
 
-url = ""
-regex_num = r"([0-9]+\.)+"
+url = "MMIP_DR burp report.html"
+# url = "AmBank_RPP_BackEnd_Web burp report.html"
+regex_num = r"^([0-9]+\.)+"
 i = 0
 ary_split_str = []
 n = 0
@@ -36,15 +40,15 @@ with open(url, encoding="utf-8") as file:
 
 		if m1:
 			filtered_str = re.sub(regex_num, "", raw_strings)
+			# print("-", filtered_str)				# Print Out full & unmerge urls
 			splited_str = filtered_str.split("/")
 			ary_split_str.append(splited_str)					# To make it in 2D-array form
+	# print()				# Print Space
 file.close()
 
 main_ary = []
 main_num = 0
 final_ary = []
-
-# print("/".join(ary_split_str[4][-4:-2]))
 
 # Calculate the total number of the main finding's name
 for i in range(len(ary_split_str)):
@@ -62,27 +66,48 @@ for i in range(main_num):
 # Time to insert the urls in each finding into respectively set of array eg: urls in 3th group into 3th sub array
 main_num_2 = 0
 title_ary = []
+cond1 = False
 for i in range(len(ary_split_str)):
 	# Seperate the main findings and its url using following condition
 	# Condition 1.1 (If is urls)
 	if len(ary_split_str[i]) > 1:						# If the cur gt 1 
 		try:
 			main_ary[main_num_2].append(ary_split_str[i])		# Append the urls into the cur index of ary
+			# if len(ary_split_str[i+1]) <= 1:
+			# 	main_num_2 += 1
 		except:
-			print("GGWP")
+			print("GGWP" + "/".join(ary_split_str[i]))
 	# Condition 1.2 (If is main findings)
 	else:
 		title_ary.append("".join(ary_split_str[i]))				# Insert the title into the ary
 		# Two situation to insert new ary: 1) Next findings name is findings name. 2) Next findings name pos+1/pos-1 is url
-		if i != len(ary_split_str)-1:					# If the i is eq len of ary
-			if len(ary_split_str[i+1]) <= 1:		#	If the len of cur+1 le 1 
+		if i == 0:
+			if len(ary_split_str[i]) == len(ary_split_str[i+1]):
+				cond1 = True
 				main_num_2 += 1
-			elif len(ary_split_str[i]) != len(ary_split_str[i-1]) and len(ary_split_str[i]) != len(ary_split_str[i+1]):		# If the len of cur ary not eq prev and next
-				main_num_2 += 1
+		elif i != len(ary_split_str)-1:					# If the i is eq len of ary
+			if cond1:
+				if len(ary_split_str[i]) == len(ary_split_str[i+1]):		#	If the len of cur+1 le 1 
+					main_num_2 += 1
+				elif len(ary_split_str[i]) != len(ary_split_str[i-1]):
+					if len(ary_split_str[i]) != len(ary_split_str[i+1]):		# If the len of cur ary not eq prev and next
+						main_num_2 += 1
+			else:
+				if len(ary_split_str[i]) == len(ary_split_str[i+1]):		#	If the len of cur+1 le 1 
+					main_num_2 += 1
+				elif len(ary_split_str[i]) != len(ary_split_str[i-1]):
+					if len(ary_split_str[i]) != len(ary_split_str[i+1]):		# If the len of cur ary not eq prev and next
+						main_num_2 += 1
+					elif len(ary_split_str[i]) == len(ary_split_str[i+1]):
+						main_num_2 += 1
+				elif len(ary_split_str[i]) == len(ary_split_str[i-1]):
+					if len(ary_split_str[i]) != len(ary_split_str[i+1]):
+						main_num_2 += 1
+
 		# print("".join(ary_split_str[i]))		# Print all the main header name out
 
-# print(main_num_2, len(main_ary), len(title_ary))		# main_ary outcome eg: [[],[],[],[['http:', '', 'www.google.com', '']], [], [], [], []]
-
+print(main_num_2, len(main_ary), len(title_ary))		# main_ary outcome eg: [[],[],[],[['http:', '', 'www.google.com', '']], [], [], [], []]
+print(title_ary[3], main_ary[3])
 # Time for the merge things in
 for sub_ary, c in zip(main_ary, range(len(main_ary))):
 	if len(sub_ary) > 1:
@@ -127,9 +152,19 @@ for sub_ary, c in zip(main_ary, range(len(main_ary))):
 						if(m[a][-1] == ""):																			# if the last elmnt is ""
 							final_ary[c].append("/".join(m[a]))
 							# print("/".join(m[a]))
-							if m[a+1][-3:-1] == m[a+2][-3:-1] and m[a+2][-3:-1] != m[a+3][-3:-1]:					# 	if cur+1 eq cur+2 and cur+2 eq cur+3
+							# if a+1==len(m)-1 or a+1==len(m)-1 or a+1==len(m)-1:
+							skip = False
+							for chk in range(1, 3):
+								if a + chk >= len(m)-1:
+									skip = True
+									break
+							if skip:
 								final_ary[c].append("/".join(m[a+1]))
-								# print("/".join(m[a+1]))
+							else:
+								if (m[a+1][-3:-1] == m[a+2][-3:-1] and m[a+2][-3:-1] != m[a+3][-3:-1]):					# If cur+1 eq cur+2 and cur+2 eq cur+3
+									final_ary[c].append("/".join(m[a+1]))
+									# print("/".join(m[a+1]))
+							poops = 0
 						elif a+2 == len(m) or a+3 == len(m) or a+1 == len(m) and m[a][-3:-1] == m[a+1][-3:-1]:		# If cur+1/+2/+3 eq last index of ary and cur eq cur+1 
 							final_ary[c].append("/".join(m[a]))
 							# print("/".join(m[a]))
@@ -144,8 +179,8 @@ for sub_ary, c in zip(main_ary, range(len(main_ary))):
 						elif m[a][-3:-1] == m[a-1][-3:-1] and m[a][-3:-1] == m[a+1][-3:-1] and m[a][-3:-1] != m[a+2][-3:-1]: # iF cur eq cur-1 and cur eq cur+1 and cur eq cur+2
 							final_ary[c].append("/".join(m[a]))
 							# print("/".join(m[a]))
-			except:
-				print("Error")		# Any exceptions print here
+			except ValueError:
+				print("Error", a, c, "/".join(m[a]))		# Any exceptions print here
 		final_ary[c].insert(0, title_ary[c])
 		# print()									# Make space between each seperate finding
 	else:
