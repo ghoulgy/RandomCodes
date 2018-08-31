@@ -86,13 +86,13 @@ for i in range(len(ary_split_str)):
 				cond1 = True
 				main_num_2 += 1
 		elif i != len(ary_split_str)-1:					# If the i is eq len of ary
-			if cond1:
+			if cond1:															# If the condition is main main urls ... in first place
 				if len(ary_split_str[i]) == len(ary_split_str[i+1]):		#	If the len of cur+1 le 1 
 					main_num_2 += 1
 				elif len(ary_split_str[i]) != len(ary_split_str[i-1]):
 					if len(ary_split_str[i]) != len(ary_split_str[i+1]):		# If the len of cur ary not eq prev and next
 						main_num_2 += 1
-			else:
+			else:																	# If the condition is main urls main ... in first place
 				if len(ary_split_str[i]) == len(ary_split_str[i+1]):		#	If the len of cur+1 le 1 
 					main_num_2 += 1
 				elif len(ary_split_str[i]) != len(ary_split_str[i-1]):
