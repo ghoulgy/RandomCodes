@@ -15,12 +15,26 @@ def getByte(b):
     return b & 0xff
 
 
-flag = ''
-for i in a:
-    rol5 = rol(i, 5, 8)
-    print hex(rol5)
-    char = rol5 ^ 0x23
-    # print char
-    flag += str(chr(char))
+def sar_8(a, width):
+  sign = a & 0x80
+  a &= 0x7F
+  a >>= width
+  a |= sign
+  return a
 
-print flag
+def shl(dest, count):
+  return hex(dest << count)
+
+shl = shl(0x07, 4)
+sar = sar_8(0x77, 4)
+print shl, sar
+
+# flag = ''
+# for i in a:
+#     rol5 = rol(i, 4, 8)
+#     print hex(rol5)
+#     char = rol5 ^ 0x23
+#     # print char
+#     flag += str(chr(char))
+
+# print flag
