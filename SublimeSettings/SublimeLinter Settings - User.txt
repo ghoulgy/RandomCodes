@@ -1,0 +1,17 @@
+// SublimeLinter Settings - User
+{
+    "linters": {
+        "flake8": {
+            "@disable": false,
+            "args": ["--ignore", "E114,E111,W292,E303,E226,E501,E127,E128,W191"],
+            "builtins": "",
+            "excludes": [],
+            "executable": "",
+            "jobs": "1",
+            "max-complexity": -1,
+            "max-line-length": null,
+            "select": "",
+            "show-code": false
+        },
+    }
+}
