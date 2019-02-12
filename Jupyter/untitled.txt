@@ -1,0 +1,25 @@
+Since most security tools also keep an eye on the network traffic to detect malicious IP addresses, attackers are increasingly adopting infrastructure of legitimate services in their attacks to hide their malicious activities.
+
+Cybersecurity researchers have now spotted a new malware attack campaign linked to the notorious DarkHydrus APT group that uses Google Drive as its command-and-control (C2) server.
+
+DarkHydrus first came to light in August last year when the APT group was leveraging the open-source Phishery tool to carry out credential-harvesting campaign against government entities and educational institutions in the Middle East.
+
+The latest malicious campaign conducted by the DarkHydrus APT group was also observed against targets in the Middle East, according to reports published by the 360 Threat Intelligence Center (360TIC) and Palo Alto Networks.
+
+This time the advanced threat attackers are using a new variant of their backdoor Trojan, called RogueRobin, which infects victims' computers by tricking them into opening a Microsoft Excel document containing embedded VBA macros, instead of exploiting any Windows zero-day vulnerability.
+
+Enabling the macro drops a malicious text (.txt) file in the temporary directory and then leverages the legitimate 'regsvr32.exe' application to run it, eventually installing the RogueRobin backdoor written in C# programming language on the compromised system.
+microsoft office macro malware
+According to Palo Alto researchers, RogueRobin includes many stealth functions to check whether it is executed in the sandbox environment, including checking for virtualized environments, low memory, processor counts, and common analysis tools running on the system. It also contains anti-debug code.
+
+Like the original version, the new variant of RogueRobin also uses DNS tunneling-a technique of sending or retrieving data and commands through DNS query packets-to communicate with its command-and-control server.
+
+However, researchers discovered that besides DNS tunneling, the malware has also been designed to use Google Drive APIs as an alternative channel to send data and receive commands from the hackers.
+
+    "RogueRobin uploads a file to the Google Drive account and continually checks the file's modification time to see if the actor has made any changes to it. The actor will first modify the file to include a unique identifier that the Trojan will use for future communications," Palo Alto researchers say.
+
+The new malware campaign suggests that the APT hacking groups are shifting more towards abusing legitimate services for their command-and-control infrastructure to evade detection.
+
+It should be noted that since VBA macros is a legitimate feature, most antivirus solutions do not flag any warning or block MS Office documents with VBA code.
+
+The best way to protect yourself from such malware attacks is always to be suspicious of any uninvited document sent via an email and never click on links inside those documents unless properly verifying the source. 
