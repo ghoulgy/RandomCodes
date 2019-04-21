@@ -11,7 +11,7 @@
     var m = new WebAssembly.Instance(new WebAssembly.Module(bin));
     var string = new TextDecoder("utf-8").decode(bin);
     var offset = m.exports.getInStrOffset();
-
+    
     // Brute Script
     var printable = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
     var encoded = new Uint8Array([119,16,125,4,127,17,85,19,10,27,83,79,35,117,50,56,84,72,39,34,78,108,6,93,94,65,124,13,65,9]);
@@ -37,7 +37,6 @@
       }
     }
     console.log(flag);
-    //
 
 </script>
 </html>
