@@ -17,3 +17,21 @@ for Sbytes in range(1, len(bytesArray), 2):
   flag += f
 
 print(flag)
+
+# Another Example
+hexValsStr = "275223102F46714238432453"
+hexVals = [hexValsStr[i: i+2] for i in range(0, len(hexValsStr), 2)]
+# Swap odd / even position
+# for i in range(0, len(hexVals), 2):
+#     tmp_odd = hexVals[i+1]
+#     hexVals[i+1] = hexVals[i]
+#     hexVals[i] = tmp_odd
+# print(hexVals)
+flag = ""
+for i in range(0, len(hexVals), 1):
+  if (i % 2 == 0):
+    flag += chr(int(hexVals[i], 16) ^ int("41", 16))
+  elif (i % 2 != 0):
+    flag += chr(int(hexVals[i], 16) ^ int("21", 16))
+
+print("Flag: {:s}".format(flag))
