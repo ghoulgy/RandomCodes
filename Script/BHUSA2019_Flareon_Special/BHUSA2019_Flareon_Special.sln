@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHUSA2019_Flareon_Special", "BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special.csproj", "{97347F10-464C-4615-910C-4408843ACDA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97347F10-464C-4615-910C-4408843ACDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97347F10-464C-4615-910C-4408843ACDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97347F10-464C-4615-910C-4408843ACDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97347F10-464C-4615-910C-4408843ACDA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D86ADD3B-6F47-4487-BE2D-96453C09C617}
+	EndGlobalSection
+EndGlobal

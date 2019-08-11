@@ -1,0 +1,11 @@
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\bin\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.deps.json
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\bin\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.runtimeconfig.json
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\bin\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.runtimeconfig.dev.json
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\bin\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.dll
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\bin\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.pdb
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\obj\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.csprojAssemblyReference.cache
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\obj\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.csproj.CoreCompileInputs.cache
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\obj\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.AssemblyInfoInputs.cache
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\obj\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.AssemblyInfo.cs
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\obj\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.dll
+C:\Users\cyjien\source\repos\BHUSA2019_Flareon_Special\BHUSA2019_Flareon_Special\obj\Debug\netcoreapp2.2\BHUSA2019_Flareon_Special.pdb
