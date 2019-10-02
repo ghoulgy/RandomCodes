@@ -1,0 +1,48 @@
+from z3 import *
+
+a = BitVec('a', 32)
+b = BitVec('b', 32)
+c = BitVec('c', 32)
+d = BitVec('d', 32)
+e = BitVec('e', 32)
+f = BitVec('f', 32)
+g = BitVec('g', 32)
+h = BitVec('h', 32)
+i = BitVec('i', 32)
+j = BitVec('j', 32)
+k = BitVec('k', 32)
+l = BitVec('l', 32)
+m = BitVec('m', 32)
+n = BitVec('n', 32)
+o = BitVec('o', 32)
+p = BitVec('p', 32)
+solver = Solver()
+
+solver.add(c ^ d ^ e ^ i ^ l ^ o == 115)
+solver.add(a ^ b ^ i ^ l ^ n ^ o == 29)
+solver.add(a ^ b ^ c ^ e ^ f ^ i ^ j ^ k ^ n ^ o ^ p == 32)
+solver.add(f ^ g ^ i ^ j ^ k ^ m ^ p == 68)
+solver.add(b ^ g ^ h ^ i ^ m ^ n ^ o ^ p == 106)
+solver.add(a ^ e ^ h ^ i ^ j ^ k ^ m ^ n ^ o ^ p == 108)
+solver.add(b ^ d ^ h ^ j ^ k ^ l ^ m ^ n ^ p == 89)
+solver.add(a ^ b ^ c ^ d ^ e ^ i ^ k ^ l ^ o == 76)
+solver.add(b ^ c ^ d ^ f ^ j ^ k ^ l ^ m == 21)
+solver.add(g ^ h ^ i ^ k ^ l ^ m ^ p == 71)
+solver.add(a ^ d ^ e ^ h ^ i ^ k ^ l ^ m ^ n ^ o ^ p == 78)
+solver.add(a ^ c ^ e ^ g ^ n == 51)
+solver.add(a ^ d ^ g ^ h ^ k ^ m ^ p == 75)
+solver.add(c ^ d ^ e ^ f ^ g ^ h ^ l ^ m ^ n ^ o == 1)
+solver.add(b ^ c ^ d ^ f ^ h ^ l ^ n ^ o ^ p == 55)
+solver.add(b ^ d ^ f ^ j ^ k ^ l ^ n ^ p == 102)
+
+print(solver.check())
+sol = solver.model()
+# [61, 90, 212, 247, 184, 116, 84, 20, 93, 193, 157, 118, 182, 31, 173, 77]
+sol_dict = dict()
+for v in sol:
+  sol_dict.update({str(v): int(str(sol[v]))})
+
+# print(sol_dict.keys())
+for k in sorted(sol_dict.keys()):
+  # print(sol_dict[k], end=' ')
+  print(chr(sol_dict[k]), end='')
