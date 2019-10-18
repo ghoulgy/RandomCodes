@@ -18,7 +18,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 url = "MMIP_DR burp report.html"
-# url = "AmBank_RPP_BackEnd_Web burp report.html"
+# url = "burp report.html"
 regex_num = r"^([0-9]+\.)+"
 i = 0
 ary_split_str = []
