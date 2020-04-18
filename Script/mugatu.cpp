@@ -1,4 +1,4 @@
-# Slight modification from https://hshrzd.wordpress.com/2019/09/30/flare-on-6-tasks-10-12/
+// Slight modification from https://hshrzd.wordpress.com/2019/09/30/flare-on-6-tasks-10-12/
 #include <iostream>
 #include <Windows.h>
 #include <iostream>
