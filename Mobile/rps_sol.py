@@ -12,7 +12,7 @@ def on_message(message, data):
 jscode = """
 Java.perform(function () {
     // Function to hook is defined here
-    var MainActivity = Java.use('com.example.seccon2015.rock_paper_scissors.MainActivity');
+    var MainActivity = Java.use('<Activity>');
 
     // Whenever button is clicked
     MainActivity.onClick.implementation = function (v) {
@@ -33,7 +33,7 @@ Java.perform(function () {
 });
 """
 
-process = frida.get_usb_device().attach('com.example.seccon2015.rock_paper_scissors')
+process = frida.get_usb_device().attach('<Activity>')
 script = process.create_script(jscode)
 script.on('message', on_message)
 print('[*] Running CTF')

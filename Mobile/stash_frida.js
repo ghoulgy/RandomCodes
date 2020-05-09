@@ -26,7 +26,7 @@ function byteToString(arr) {
 Java.perform(function () {
     // Function to hook is defined here
     
-    var MainActivity = Java.use("com.nsec.locked.MainActivity");
+    var MainActivity = Java.use("<Activity>");
     // Check input String
     const StringBuilder = Java.use('java.lang.StringBuilder');
 
@@ -35,7 +35,7 @@ Java.perform(function () {
             return result;
     };
 
-    MainActivity.transform.implementation = function(s) {
+    MainActivity.<Activity>.implementation = function(s) {
       var buffer = Java.array('byte', [ 228, 99, 161, 233 ,249, 51 ]);
       /* String to Byte
       var ch, st, re = [];
@@ -54,13 +54,12 @@ Java.perform(function () {
   
 Java.perform(function () {
     // Function to hook is defined here
-    var MainActivity = Java.use("com.nsec.locked.UnlockActivity");
+    var MainActivity = Java.use("<Activity>");
     var byt = Java.use("android.content.Intent");
     var IO = Java.use("org.apache.commons.io.IOUtils");
 
     MainActivity.onCreate.implementation = function(v) {
       this.onCreate(v);  
-      // console.log(byt.getByteArrayExtra("DIGEST"));
     }
 
     // byt.getByteArrayExtra.implementation = function(s) {
@@ -88,7 +87,7 @@ Java.perform(function () {
 
     // Modify return value
     var string_class = Java.use("java.lang.String");
-    MainActivity.transform.implementation = function(s) {
+    MainActivity.<Activity>.implementation = function(s) {
       // var buffer = Java.array('byte', [0]);
       var new_string = string_class.$new("");
       var buffer = this.transform(new_string);
@@ -96,7 +95,7 @@ Java.perform(function () {
       return buffer;
     }
 
-    MainActivity.transform.implementation = function(s) {
+    MainActivity.<Activity>.implementation = function(s) {
       var buffer = Java.array('byte', [ 145, 209, 170, 8, 204, 61 ]);
       return Java.array('byte', [ 145, 209, 170, 8, 204, 61 ]);
     }

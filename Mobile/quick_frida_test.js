@@ -24,13 +24,12 @@ function byteToString(arr) {
 
 Java.perform(function () {
     // Function to hook is defined here
-    var MainActivity = Java.use("com.nsec.locked.UnlockActivity");
+    var MainActivity = Java.use("<Activity>");
     var byt = Java.use("android.content.Intent");
     var IO = Java.use("org.apache.commons.io.IOUtils");
 
     MainActivity.onCreate.implementation = function(v) {
       this.onCreate(v);  
-      // console.log(byt.getByteArrayExtra("DIGEST"));
     }
 
     // byt.getByteArrayExtra.implementation = function(s) {
@@ -47,10 +46,9 @@ Java.perform(function () {
       }
       var buffer = Java.array('byte', st);
       // console.log(r);
-      // if(r == "android.content.res.AssetManager$AssetInputStream@8b99f4a") {
-      // for(var i=0; i < 256; i++) {
-      //   console.log(JSON.stringify(this.toByteArray(r)));  
-      // }
+      for(var i=0; i < 256; i++) {
+        console.log(JSON.stringify(this.toByteArray(r)));  
+      }
       console.log(this.toByteArray(r)['message']['payload']);
 
       return buffer;  
