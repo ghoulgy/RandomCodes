@@ -1,6 +1,6 @@
 # Emotet msg email password extractor
 # Date: 9/2020 
-# By: @ghoul
+# By: @ghoulgy
 import binascii
 import codecs
 import sys 
