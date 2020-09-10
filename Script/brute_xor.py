@@ -1,6 +1,6 @@
 import sys
 
-with open("C:\\Users\\cyjien\\Desktop\\possible_conf.bin", "rb") as f:
+with open("C:\\Users\\pop\\Desktop\\possible_conf.bin", "rb") as f:
   contents = f.read()
 
 for i in range(256):
