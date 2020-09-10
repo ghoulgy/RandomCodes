@@ -1,5 +1,6 @@
 # Convert Wide Char to Ascii (E.g W.I.D.E -> WIDE)
 import binascii
+import sys
 import re
 
 with open(sys.argv[1], "rb") as inf:
