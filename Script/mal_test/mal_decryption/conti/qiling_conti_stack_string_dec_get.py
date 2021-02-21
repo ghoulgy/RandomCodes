@@ -1,4 +1,18 @@
 # Conti Ransomware
+'''
+"OleAut32.dll",
+"Iphlpapi.dll",
+"Kernel32.dll",
+"Shell32.dll",
+"Rstrtmgr.dll",
+"Netapi32.dll",
+"Advapi32.dll",
+"Shlwapi.dll",
+"ws2_32.dll",
+"User32.dll",
+"Ole32.dll",
+'''
+
 from qiling import *
 
 # Get decrypted stack strings in the buffer 
@@ -18,18 +32,4 @@ def my_sandbox(path, rootfs):
 
 
 if __name__ == "__main__":
-    my_sandbox(["hahaha.exe"], "/home/lol/Desktop/qiling/examples/rootfs/x86_windows")
-
-'''
-"OleAut32.dll",
-"Iphlpapi.dll",
-"Kernel32.dll",
-"Shell32.dll",
-"Rstrtmgr.dll",
-"Netapi32.dll",
-"Advapi32.dll",
-"Shlwapi.dll",
-"ws2_32.dll",
-"User32.dll",
-"Ole32.dll",
-'''
+    my_sandbox(["unpacked_conti.exe"], "~/Desktop/qiling/examples/rootfs/x86_windows")

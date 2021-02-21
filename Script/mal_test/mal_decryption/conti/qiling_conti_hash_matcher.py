@@ -64,4 +64,4 @@ def my_sandbox(path, rootfs):
 
 
 if __name__ == "__main__":
-    my_sandbox(["hahaha.exe"], "/home/lol/Desktop/qiling/examples/rootfs/x86_windows")
+    my_sandbox(["unpacked_conti.exe"], "~/Desktop/qiling/examples/rootfs/x86_windows")
