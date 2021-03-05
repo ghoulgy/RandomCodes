@@ -75,7 +75,7 @@ class custom_hash_dll_func_name:
 def main():
     shellcode = b"\xC1\xC8\x0D" # ror eax, 0xD
     ql = Qiling(shellcoder=shellcode,
-                rootfs="/home/lol/Desktop/qiling/examples/rootfs/x86_windows",
+                rootfs="/qiling/examples/rootfs/x86_windows",
                 ostype="windows",
                 archtype="x86",
                 console=False)
