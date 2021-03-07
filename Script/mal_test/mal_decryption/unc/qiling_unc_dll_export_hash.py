@@ -1,4 +1,4 @@
-# Shellcode from UNC in-memory malware loader
+# Hash finding algorithm from SystemBC shellcode
 import pefile
 from qiling import *
 
