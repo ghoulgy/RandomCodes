@@ -1,0 +1,86 @@
+import base64
+import struct
+
+arr_b64_enc_bytes = ["FAAJGxgGFQoTAh4kNSA0ICk7ExgeISsgODQTBDo1NSohOxkqNTQeICETFyAjHiQeKjQTFC40Oyoi",
+"CiEmJSMqAx4hHCorBCAhISokOx4gITQ=",
+"CiEmJSMqAxoG",
+"BCAhNCohOxc1ICI3OwUqHyY5HiA1BisiHiE=",
+"FA4UGwoCCxX+GQo=",
+"FxUACBUGAgn+AwoUXy9veV4=",
+"GhQKFRcVAAn+Awo=",
+"FzUgKDUmIgsmOyY=",
+"FzUgKDUmImcJHiMqNA==",
+"BgMDGhQKFRQXFQAJ/gMK",
+"Bjc3CyY7Jg==",
+"FxoFA/4E",
+"GyA1ZwU1IDg0KjU=",
+"AhQABCYkHyo=",
+"ExgeISsgODQ=",
+"Exc1ICg1JiJnCR4jKjQ=",
+"Exo0KjU0EwYjI2caNCo1NA==",
+"EwY3NwsmOyY=",
+"EwIeJDUgNCApOxMYHiErIDg0",
+"OCIeJGcU/wYLABgEABcOZwsKAwobCmdgISAeITsqNSYkOx45Kg==",
+"OCUmKyIeIWcLCgMKGwpnFA4UGwoCFBsGGwoFBgT8Ghc=",
+"OCUmKyIeIWcLCgMKGwpnFA4UGwoCFBsGGwoFBgT8GhdnYisqIyo7KgAjKyo0Ow==",
+"OCUmKyIeIWcLCgMKGwpnFA4UGwoCFBsGGwoFBgT8GhdnYhwqKjcZKjU0HiAhNG13",
+"OTQ0JisiHiFnCyojKjsqZxQfJisgODRnYAYjI2dgFjoeKjs=",
+"JSQrKiseO2dgNCo7ZywrKikmOiM7Mmc1KiQgOSo1LiohJiUjKitnASA=",
+"JSQrKiseO2dgNCo7ZywrKikmOiM7MmclICA7NDsmOzo0NyAjHiQuZx4oISA1KiYjIykmHiM6NSo0",
+"YTkfKw==",
+"YTkfKy8=",
+"NyA4KjU0HyojI2cLHjQiIDohO2ILHjQc/iImKCpnYv4iJigqFyY7H2c=",
+"NyA4KjU0HyojI2EqLyo=",
+"EDUqJisiKhBhOy87",
+"/wACCgsV/hkK",
+"/wACChcGG/8=",
+"Cyo0HDsgNxM=",
+"BCAhOzUgI2cXJiEqIxMLKjQcOyA3",
+"GCYjIxcmNyo1",
+"LCweKzIy",
+"LCwqLzsyMg==",
+"OjcrJjsq",
+"CCMgJSYjEywGb3l5eW8GdGJvCXV3Ynt2CXRibngLdmJ5eHkFdQYLeQYLCXgy",
+"Exc1ICg1JiJnCR4jKjQTAh4kNSA0ICk7EwovJB8mISgqZxQqNTkqNQ==",
+"Exc1ICg1JiJnCR4jKjRnXy9veV4TAh4kNSA0ICk7EwovJB8mISgqZxQqNTkqNQ==",
+"Exc1ICg1JiJnCR4jKjQTAh4kNSA0ICk7ZxQWA2cUKjU5KjU=",
+"Exc1ICg1JiJnCR4jKjRnXy9veV4TAh4kNSA0ICk7ZxQWA2cUKjU5KjU=",
+"Exc1ICg1JiJnCR4jKjQTIi40NiM=",
+"Exc1ICg1JiJnCR4jKjRnXy9veV4TIi40NiM=",
+"FQAAGxME/gIZdQ==",
+"FAoDCgQbZ11nCRUAAmcYHiF0dRAXKjUpCSA1IiY7OyorCyY7JhAXKjUpFzUgJBAXNSAkKjQ0",
+"ASYiKg==",
+"/gsXNSAkKjQ0",
+"Fyo1JCohOxc1ICQqNDQgNRseIio=",
+"NDkkHyA0Ow==",
+"JDQ1NDQ=",
+"NCo1OR4kKjQ=",
+"IzQmNDQ=",
+"OB4hIyAoICE=",
+"NDcgICM0OQ==",
+"Ki83IyA1KjU=",
+"FTohOx4iKgU1IBwqNQ==",
+"FC40Oyoi",
+"NyA4KjU0HyojIw==",
+"ODQkNR43Ow==",
+"BDUqJjsq",
+"GB4hdHUQFzUgJCo0NA==",
+"BCAiIiYhKwMeISo=",
+"YjQmKSo=",
+"FAAJGxgGFQoTAh4kNSA0ICk7ExgeISsgODRnARsTBDo1NSohOxkqNTQeICETGB4hIyAoICE=",
+"Ki83IyA1KjVhKi8qYw==",
+"FB8qIyM=",
+"JSQrKiseO2dgNCo7ZzQmKSolICA7ZyEqOzggNRw=",
+"JSQrKiseO2dgKyojKjsqOSYjOipnNCYpKiUgIDs="]
+
+for b64_enc_bytes in arr_b64_enc_bytes:
+	b64_dec_bytes = base64.b64decode(b64_enc_bytes)
+	dec_str = ""
+
+	for b64_dec_byte in b64_dec_bytes:
+		if ((b64_dec_byte ^ 2) + 4) ^ 73 > 0xff:
+			dec_str += chr(struct.pack("i", ((b64_dec_byte ^ 2) + 4) ^ 73)[0])
+		else:
+			dec_str += chr(((b64_dec_byte ^ 2) + 4) ^ 73)
+
+	print(f"{b64_enc_bytes}: {dec_str}")
