@@ -1,3 +1,5 @@
+# Copy those library and its base address from "Symbols" section in xdbg64
+# It will copy those library from windows system path (bit is depands on the version of python used) into the working directory
 import os
 import struct
 import shutil
