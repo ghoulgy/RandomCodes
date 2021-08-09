@@ -19,7 +19,7 @@ if len(std_base64chars) == len(custom):
 		else:
 			fixed_data = fixed_data + b"=" * (len(fixed_data) % 4)
 			decoded = base64.b64decode(fixed_data).decode()
-		print(f"{hex(i+1)}) {data}: {decoded}")
+		print(f"{hex(i+1)}): {decoded}")
 else:
 	print("Invalid b64 key!!")
 
