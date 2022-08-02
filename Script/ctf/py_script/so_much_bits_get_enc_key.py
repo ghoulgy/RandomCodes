@@ -43,7 +43,7 @@ for _, key, path in data:
     encoded_data += f"{path}".encode()
     encoded_data += b"\x00\x00\x00\x00"
 
-res = requests.post("http://116.202.161.100:57689/encrypt_db", data=b64encode(encoded_data))
+res = requests.post("http://encryption_db", data=b64encode(encoded_data))
 respond = b64decode(res.text)
 
 print(respond)
