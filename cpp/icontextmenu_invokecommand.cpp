@@ -1,14 +1,14 @@
 #include <ShlObj.h>
 #include <iostream>
+#include <objidl.h>
 
 int main()
 {
     wchar_t filePath[] = L"C:\\Users\\<USER_NAME>\\Desktop\\calc.exe";
     IShellFolder* desktopFolder;
     IContextMenu* contextMenu;
-    LPITEMIDLIST pidl, ppidlLast;
-    // LPCITEMIDLIST ppidlLast;
-    // SFGAOF stSFGAOFOut = 0;
+    LPITEMIDLIST pidl = NULL;
+    LPITEMIDLIST ppidlLast = NULL;
 
     if (FAILED(CoInitialize(NULL)))
     {
@@ -40,7 +40,9 @@ int main()
         printf("[-] Failed QueryContextMenu\n");
         contextMenu->Release();
         desktopFolder->Release();
-        // CoTaskMemFree(&ppidlLast);
+        ppidlLast = NULL;
+        CoTaskMemFree(ppidlLast);
+
         return 1;
     }
 
@@ -67,7 +69,8 @@ int main()
     }
 
     contextMenu->Release();
-    // CoTaskMemFree(ppidlLast);
+    ppidlLast = NULL;
+    CoTaskMemFree(ppidlLast);
     CoUninitialize();
 
     return 0;
