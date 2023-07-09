@@ -8,7 +8,9 @@ nbits = 16
 
 with open("out_hex_bytes.bin", "wb") as f:
     for decimal in decimal_array:
-        decimal = decimal & ((1 << nbits)-1) # Remove any negative number e.g. -41
+        # Convert any negative number to hex byte e.g. -41
+        # nbits = 16 bits since it is hex number (base 16)
+        decimal = decimal & ((1 << nbits)-1) # ((1 << nbits) - 1) == 0xFFFF
         hex_str = f"{decimal:X}"
 
         # Remove any converted decimal value that contains double hex bytes and remove the first FF byte if there is any 
