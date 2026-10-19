@@ -1,0 +1,25 @@
+From fed95a79e2d4b83b1f680111363d06822bec69e5 Mon Sep 17 00:00:00 2001
+From: ghoulgy <cyjien@hotmail.com>
+Date: Mon, 19 Oct 2026 22:51:49 +0800
+Subject: [PATCH] Florida: string_frida_rpc
+
+---
+ gum/gum.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gum/gum.c b/gum/gum.c
+index 73df7918..067e2aeb 100644
+--- a/gum/gum.c
++++ b/gum/gum.c
+@@ -302,7 +302,7 @@ gum_init_embedded (void)
+   g_log_set_default_handler (gum_on_log_message, NULL);
+   gum_do_init ();
+ 
+-  g_set_prgname ("frida");
++  g_set_prgname ("ggbond");
+ 
+ #if defined (HAVE_LINUX) && defined (HAVE_GLIBC)
+   gum_libdl_prevent_unload ();
+-- 
+2.43.0
+
